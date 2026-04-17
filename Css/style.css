@@ -1,54 +1,43 @@
 :root {
-  --ink:      #0d0d0d;   /* near black */
-  --paper:    #faf7f2;   /* warm off-white */
-  --acid:     #d4ff00;   /* bright yellow-green */
-  --coral:    #ff3d2e;   /* red-orange */
-  --cobalt:   #1a35ff;   /* bold blue */
-  --lavender: #c9b8ff;   /* soft purple */
+  --ink: #0d0d0d; /* near black */
+  --paper: #faf7f2; /* warm off-white */
+  --acid: #d4ff00; /* bright yellow-green */
+  --coral: #ff3d2e; /* red-orange */
+  --cobalt: #1a35ff; /* bold blue */
+  --lavender: #c9b8ff; /* soft purple */
 }
 
 * {
   box-sizing: border-box;
-  /* box-sizing: border-box means padding and 
-     border are included in an element's width.
-     Much easier to work with. */
   margin: 0;
   padding: 0;
 }
 
-
 html {
   scroll-behavior: smooth;
-  /* smooth = clicking a nav link scrolls 
-     gently instead of jumping instantly */
 }
 
 body {
   background-color: var(--paper);
   color: var(--ink);
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-weight: 300;
   overflow-x: hidden;
-  /* overflow-x: hidden stops horizontal 
-     scrollbars from appearing */
   cursor: none;
-  /* We hide the default cursor because
-     we made a custom one in JavaScript */
 }
 
 .cursor {
   width: 10px;
   height: 10px;
   background-color: var(--coral);
-  border-radius: 50%;        
-  position: fixed;            
+  border-radius: 50%;
+  position: fixed;
   top: 0;
   left: 0;
-  pointer-events: none;       
-  z-index: 9999;             
+  pointer-events: none;
+  z-index: 9999;
   transform: translate(-50%, -50%);
   mix-blend-mode: multiply;
-
 }
 
 .cursor-ring {
@@ -62,17 +51,17 @@ body {
   pointer-events: none;
   z-index: 9998;
   transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s;
-  
+  transition:
+    width 0.2s,
+    height 0.2s;
 }
-
 
 nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;              
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -80,21 +69,22 @@ nav {
   padding-bottom: 22px;
   padding-left: 52px;
   padding-right: 52px;
+  background-color: #ffffff;
 }
 
 /* The "SN" logo on the left */
 .nav-logo {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 1.3rem;
   letter-spacing: 0.14em;
   color: var(--ink);
-  text-decoration: none;     
+  text-decoration: none;
 }
 
 /* The group of links on the right */
 .nav-links {
   display: flex;
-  gap: 36px;                 
+  gap: 36px;
 }
 
 /* Each individual nav link */
@@ -104,14 +94,13 @@ nav {
   text-transform: uppercase;
   text-decoration: none;
   color: var(--ink);
-  opacity: 0.5;               
+  opacity: 0.5;
   transition: opacity 0.2s;
 }
 
 .nav-links a:hover {
-  opacity: 1;                 
+  opacity: 1;
 }
-
 
 .nav-cta {
   background-color: var(--ink);
@@ -128,7 +117,6 @@ nav {
 .nav-cta:hover {
   background-color: var(--cobalt) !important;
 }
-
 
 .hero {
   min-height: 100vh;
@@ -218,9 +206,8 @@ nav {
   animation: pulse-dot 2s ease-in-out infinite;
 }
 
-
 .hero-name {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: clamp(100px, 14vw, 200px);
   line-height: 0.85;
   position: relative;
@@ -231,7 +218,6 @@ nav {
 .hero-name .highlight {
   color: var(--cobalt);
 }
-
 
 .hero-bottom-row {
   display: grid;
@@ -284,7 +270,9 @@ nav {
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  transition: background-color 0.2s, transform 0.2s;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
 }
 
 .btn-primary:hover {
@@ -304,7 +292,10 @@ nav {
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+  transition:
+    border-color 0.2s,
+    color 0.2s,
+    transform 0.2s;
 }
 
 .btn-secondary:hover {
@@ -312,7 +303,6 @@ nav {
   color: var(--cobalt);
   transform: translateY(-2px);
 }
-
 
 .marquee-strip {
   overflow: hidden;
@@ -330,7 +320,7 @@ nav {
 }
 
 .marquee-item {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 1.05rem;
   letter-spacing: 0.2em;
   color: var(--acid);
@@ -360,7 +350,7 @@ nav {
 
 /* e.g. "Selected Work" */
 .section-label {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: clamp(38px, 5vw, 68px);
   letter-spacing: 0.04em;
 }
@@ -379,18 +369,30 @@ nav {
   gap: 18px;
 }
 
-.project-card:nth-child(1) { grid-column: span 7; }
-.project-card:nth-child(2) { grid-column: span 5; }
-.project-card:nth-child(3) { grid-column: span 5; }
-.project-card:nth-child(4) { grid-column: span 7; }
-.project-card:nth-child(5) { grid-column: span 12; }
+.project-card:nth-child(1) {
+  grid-column: span 7;
+}
+.project-card:nth-child(2) {
+  grid-column: span 5;
+}
+.project-card:nth-child(3) {
+  grid-column: span 5;
+}
+.project-card:nth-child(4) {
+  grid-column: span 7;
+}
+.project-card:nth-child(5) {
+  grid-column: span 12;
+}
 
 .project-card {
   position: relative;
   overflow: hidden;
   border: 1.5px solid rgba(0, 0, 0, 0.08);
   cursor: pointer;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .project-card:hover {
@@ -416,9 +418,10 @@ nav {
   opacity: 0;
   /* opacity: 0 makes it invisible */
   transform: translateY(-6px);
-  transition: opacity 0.25s, transform 0.25s;
+  transition:
+    opacity 0.25s,
+    transform 0.25s;
 }
-
 
 .project-card:hover .card-link-badge {
   opacity: 1;
@@ -444,7 +447,7 @@ nav {
 }
 
 .card-big-label {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: clamp(32px, 4vw, 60px);
   letter-spacing: 0.04em;
   line-height: 1;
@@ -455,22 +458,39 @@ nav {
   padding-right: 24px;
 }
 
-.c1 .card-visual { background-color: #1a35ff; }
-.c2 .card-visual { background-color: #0d0d0d; }
-.c3 .card-visual { background-color: #d4ff00; }
-.c4 .card-visual { background-color: #ff3d2e; }
+.c1 .card-visual {
+  background-color: #1a35ff;
+}
+.c2 .card-visual {
+  background-color: #0d0d0d;
+}
+.c3 .card-visual {
+  background-color: #d4ff00;
+}
+.c4 .card-visual {
+  background-color: #ff3d2e;
+}
 .c5 .card-visual {
   background-color: #1a1a2e;
-  aspect-ratio: 21 / 8; 
+  aspect-ratio: 21 / 8;
 }
 
-.c1 .card-big-label { color: #faf7f2; }
-.c2 .card-big-label { color: #faf7f2; }
-.c4 .card-big-label { color: #faf7f2; }
-.c5 .card-big-label { color: #faf7f2; }
+.c1 .card-big-label {
+  color: #faf7f2;
+}
+.c2 .card-big-label {
+  color: #faf7f2;
+}
+.c4 .card-big-label {
+  color: #faf7f2;
+}
+.c5 .card-big-label {
+  color: #faf7f2;
+}
 
-.c3 .card-big-label { color: #0d0d0d; }
-
+.c3 .card-big-label {
+  color: #0d0d0d;
+}
 
 .card-info {
   padding-top: 18px;
@@ -506,15 +526,15 @@ nav {
   justify-content: center;
   font-size: 0.85rem;
   flex-shrink: 0;
-  transition: background-color 0.2s, color 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 }
 
 .project-card:hover .card-arrow {
   background-color: var(--ink);
   color: var(--paper);
 }
-
-
 
 .exp-section {
   padding-top: 100px;
@@ -567,7 +587,7 @@ nav {
 }
 
 .exp-company {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 28px;
   letter-spacing: 0.06em;
   color: var(--paper);
@@ -618,7 +638,7 @@ nav {
 }
 
 .exp-points li::before {
-  content: '—';
+  content: "—";
   position: absolute;
   left: 0;
   opacity: 0.4;
@@ -631,14 +651,11 @@ nav {
   overflow: hidden;
 }
 
-
-
 .about-top {
   display: grid;
   grid-template-columns: 420px 1fr;
   min-height: 600px;
 }
-
 
 .about-photo-col {
   position: relative;
@@ -653,12 +670,10 @@ nav {
   object-position: center 12%;
   display: block;
   filter: grayscale(15%);
-
 }
 
-
 .about-photo-col::after {
-  content: '';
+  content: "";
 
   position: absolute;
   top: 0;
@@ -668,16 +683,19 @@ nav {
   background: linear-gradient(to right, transparent 70%, var(--ink) 100%);
 }
 
-
 .about-photo-accent {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(to right, var(--acid), var(--cobalt), var(--coral));
+  background: linear-gradient(
+    to right,
+    var(--acid),
+    var(--cobalt),
+    var(--coral)
+  );
 }
-
 
 .about-intro-col {
   padding-top: 72px;
@@ -689,7 +707,6 @@ nav {
   justify-content: center;
 }
 
-
 .about-kicker {
   font-size: 0.68rem;
   letter-spacing: 0.24em;
@@ -698,9 +715,8 @@ nav {
   margin-bottom: 24px;
 }
 
-
 .about-heading {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: clamp(52px, 5.5vw, 86px);
   line-height: 0.9;
   margin-bottom: 32px;
@@ -709,9 +725,7 @@ nav {
 .about-heading em {
   color: var(--acid);
   font-style: normal;
-
 }
-
 
 .about-body {
   font-size: 0.97rem;
@@ -719,7 +733,6 @@ nav {
   color: rgba(255, 255, 255, 0.62);
   max-width: 480px;
 }
-
 
 .about-body + .about-body {
   margin-top: 16px;
@@ -738,7 +751,6 @@ nav {
   flex-wrap: wrap;
 }
 
-
 .btn-acid {
   background-color: var(--acid);
   color: var(--ink);
@@ -751,7 +763,9 @@ nav {
   text-transform: uppercase;
   text-decoration: none;
   font-weight: 500;
-  transition: opacity 0.2s, transform 0.2s;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
 }
 
 .btn-acid:hover {
@@ -770,15 +784,15 @@ nav {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
-  transition: border-color 0.2s, color 0.2s;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
 }
 
 .btn-ghost:hover {
   border-color: var(--acid);
   color: var(--acid);
 }
-
-
 
 .about-stats-bar {
   display: grid;
@@ -808,7 +822,7 @@ nav {
 
 /* Animated line that grows from left on hover */
 .stat-block::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -824,7 +838,7 @@ nav {
 
 /* e.g. "4+" */
 .stat-num {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 56px;
   line-height: 1;
   color: var(--acid);
@@ -838,8 +852,6 @@ nav {
   color: rgba(255, 255, 255, 0.38);
   margin-top: 6px;
 }
-
-
 
 .about-bottom {
   display: grid;
@@ -862,7 +874,6 @@ nav {
   padding-right: 52px;
 }
 
-
 .about-col-label {
   font-size: 0.68rem;
   letter-spacing: 0.22em;
@@ -872,7 +883,6 @@ nav {
   padding-bottom: 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
-
 
 .skills-group {
   margin-bottom: 32px;
@@ -892,7 +902,6 @@ nav {
   gap: 8px;
 }
 
-
 .skill-pill {
   padding-top: 7px;
   padding-bottom: 7px;
@@ -902,7 +911,10 @@ nav {
   font-size: 0.7rem;
   letter-spacing: 0.08em;
   color: rgba(255, 255, 255, 0.7);
-  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+  transition:
+    border-color 0.2s,
+    color 0.2s,
+    background-color 0.2s;
 }
 
 .skill-pill:hover {
@@ -911,12 +923,10 @@ nav {
   background-color: rgba(212, 255, 0, 0.05);
 }
 
-
 .process-steps {
   display: flex;
   flex-direction: column;
 }
-
 
 .process-step {
   display: flex;
@@ -933,7 +943,7 @@ nav {
 
 /* The big faded number e.g. "01" */
 .step-num {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 36px;
   color: rgba(255, 255, 255, 0.1);
   line-height: 1;
@@ -953,8 +963,6 @@ nav {
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.42);
 }
-
-
 
 .contact-section {
   padding-top: 120px;
@@ -979,12 +987,10 @@ nav {
     transparent 70%
   );
   pointer-events: none;
-
 }
 
-
 .contact-title {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: clamp(60px, 9vw, 130px);
   line-height: 0.88;
   position: relative;
@@ -994,7 +1000,6 @@ nav {
 .contact-title span {
   color: var(--cobalt);
 }
-
 
 .contact-sub {
   font-size: 0.95rem;
@@ -1008,7 +1013,7 @@ nav {
 /* The email address link */
 .contact-email {
   display: inline-block;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: clamp(20px, 3vw, 36px);
   letter-spacing: 0.08em;
   color: var(--ink);
@@ -1017,14 +1022,15 @@ nav {
   padding-bottom: 4px;
   position: relative;
   z-index: 1;
-  transition: color 0.2s, border-color 0.2s;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
 }
 
 .contact-email:hover {
   color: var(--cobalt);
   border-color: var(--cobalt);
 }
-
 
 .contact-socials {
   display: flex;
@@ -1054,8 +1060,6 @@ nav {
   opacity: 0.2;
 }
 
-
-
 footer {
   background-color: var(--ink);
   color: var(--paper);
@@ -1072,7 +1076,6 @@ footer {
   opacity: 0.55;
 }
 
-
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -1084,7 +1087,6 @@ footer {
   }
 }
 
-
 @keyframes drift {
   from {
     transform: translate(0, 0) scale(1);
@@ -1093,7 +1095,6 @@ footer {
     transform: translate(25px, 20px) scale(1.06);
   }
 }
-
 
 @keyframes marquee {
   from {
@@ -1105,27 +1106,34 @@ footer {
 }
 
 @keyframes pulse-dot {
-  0%   { opacity: 1; transform: scale(1); }
-  50%  { opacity: 0.5; transform: scale(1.4); }
-  100% { opacity: 1; transform: scale(1); }
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.4);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
-
 
 .reveal {
   opacity: 0;
   transform: translateY(32px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s ease;
 }
-
 
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-
 @media (max-width: 768px) {
-
   body {
     cursor: auto;
   }
@@ -1149,16 +1157,13 @@ footer {
     gap: 16px;
   }
 
-
   .nav-links a:not(.nav-cta) {
     display: none;
   }
 
-
   .nav-cta {
     display: inline-block;
   }
-
 
   .hero {
     padding-top: 110px;
@@ -1166,7 +1171,6 @@ footer {
     padding-left: 24px;
     padding-right: 24px;
   }
-
 
   .hero-top-row {
     margin-bottom: 32px;
@@ -1199,14 +1203,11 @@ footer {
     text-align: center;
   }
 
-
-
   .marquee-item {
     font-size: 0.9rem;
     padding-left: 20px;
     padding-right: 20px;
   }
-
 
   .section {
     padding-top: 64px;
@@ -1221,11 +1222,21 @@ footer {
     gap: 16px;
   }
 
-  .project-card:nth-child(1) { grid-column: auto; }
-  .project-card:nth-child(2) { grid-column: auto; }
-  .project-card:nth-child(3) { grid-column: auto; }
-  .project-card:nth-child(4) { grid-column: auto; }
-  .project-card:nth-child(5) { grid-column: auto; }
+  .project-card:nth-child(1) {
+    grid-column: auto;
+  }
+  .project-card:nth-child(2) {
+    grid-column: auto;
+  }
+  .project-card:nth-child(3) {
+    grid-column: auto;
+  }
+  .project-card:nth-child(4) {
+    grid-column: auto;
+  }
+  .project-card:nth-child(5) {
+    grid-column: auto;
+  }
 
   .c5 .card-visual {
     aspect-ratio: 16 / 10;
@@ -1266,11 +1277,7 @@ footer {
   }
 
   .about-photo-col::after {
-    background: linear-gradient(
-      to bottom,
-      transparent 60%,
-      var(--ink) 100%
-    );
+    background: linear-gradient(to bottom, transparent 60%, var(--ink) 100%);
   }
 
   .about-intro-col {
@@ -1360,7 +1367,6 @@ footer {
     gap: 14px;
   }
 
-
   .social-divider {
     display: none;
   }
@@ -1377,5 +1383,4 @@ footer {
     padding-left: 24px;
     padding-right: 24px;
   }
-
 }
