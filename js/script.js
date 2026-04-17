@@ -65,3 +65,61 @@ if (isMobile) {
   dot.style.display = "none";
   ring.style.display = "none";
 }
+
+var words = ["great.", "better.", "meaningful.", "impactful."];
+var el = document.getElementById("changing-word");
+
+var wordIndex = 0;
+var charIndex = 0;
+var isDeleting = false;
+
+window.addEventListener("load", function () {
+  if (!el) return;
+
+  var temp = document.createElement("span");
+  temp.style.visibility = "hidden";
+  temp.style.position = "absolute";
+  temp.style.whiteSpace = "nowrap";
+  temp.style.font = window.getComputedStyle(el).font;
+
+  document.body.appendChild(temp);
+
+  var maxWidth = 0;
+
+  words.forEach(function (word) {
+    temp.textContent = word;
+    maxWidth = Math.max(maxWidth, temp.offsetWidth);
+  });
+
+  el.style.display = "inline-block";
+  el.style.width = maxWidth + "px";
+
+  document.body.removeChild(temp);
+
+  typeEffect();
+});
+
+function typeEffect() {
+  var currentWord = words[wordIndex];
+
+  if (isDeleting) {
+    charIndex--;
+  } else {
+    charIndex++;
+  }
+
+  el.textContent = currentWord.substring(0, charIndex);
+
+  var speed = isDeleting ? 50 : 100;
+
+  if (!isDeleting && charIndex === currentWord.length) {
+    speed = 1200; // pause
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    wordIndex = (wordIndex + 1) % words.length;
+    speed = 300;
+  }
+
+  setTimeout(typeEffect, speed);
+}
