@@ -1,62 +1,11 @@
-/* ==========================================
-   style.css — Susan Nkere Portfolio
-
-   This file controls how everything LOOKS.
-   It is connected to index.html via this 
-   line in the <head>:
-   <link rel="stylesheet" href="css/style.css">
-
-   HOW TO READ CSS:
-   selector { property: value; }
-   
-   The selector targets an HTML element.
-   The property is what you want to change.
-   The value is what you want to change it to.
-
-   CONTENTS:
-   1.  Colour Variables
-   2.  Reset (removes browser default styles)
-   3.  Body
-   4.  Custom Cursor
-   5.  Navigation Bar
-   6.  Hero Section
-   7.  Marquee Strip
-   8.  Section Headings (shared styles)
-   9.  Project Cards
-   10. Experience Section
-   11. About Section
-   12. Contact Section
-   13. Footer
-   14. Animations
-========================================== */
-
-/* ==========================================
-   1. COLOUR VARIABLES
-
-   We define our colours once here at the top.
-   Then we use them throughout the file like:
-   color: var(--coral);
-   
-   If you want to change a colour, change it
-   here and it updates everywhere at once.
-========================================== */
-
 :root {
-  --ink: #0d0d0d; /* near black */
-  --paper: #faf7f2; /* warm off-white */
-  --acid: #d4ff00; /* bright yellow-green */
-  --coral: #ff3d2e; /* red-orange */
-  --cobalt: #1a35ff; /* bold blue */
-  --lavender: #c9b8ff; /* soft purple */
+  --ink:      #0d0d0d;   /* near black */
+  --paper:    #faf7f2;   /* warm off-white */
+  --acid:     #d4ff00;   /* bright yellow-green */
+  --coral:    #ff3d2e;   /* red-orange */
+  --cobalt:   #1a35ff;   /* bold blue */
+  --lavender: #c9b8ff;   /* soft purple */
 }
-
-/* ==========================================
-   2. RESET
-
-   Browsers add their own default spacing
-   and sizing. This removes all of that so
-   we start with a clean, predictable base.
-========================================== */
 
 * {
   box-sizing: border-box;
@@ -67,9 +16,6 @@
   padding: 0;
 }
 
-/* ==========================================
-   3. BODY
-========================================== */
 
 html {
   scroll-behavior: smooth;
@@ -80,7 +26,7 @@ html {
 body {
   background-color: var(--paper);
   color: var(--ink);
-  font-family: "DM Sans", sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 300;
   overflow-x: hidden;
   /* overflow-x: hidden stops horizontal 
@@ -90,33 +36,19 @@ body {
      we made a custom one in JavaScript */
 }
 
-/* ==========================================
-   4. CUSTOM CURSOR
-
-   Two elements:
-   .cursor  = the small red dot
-   .cursor-ring = the larger trailing circle
-
-   Both are fixed to the screen (not the page)
-   and positioned by JavaScript.
-========================================== */
-
 .cursor {
   width: 10px;
   height: 10px;
   background-color: var(--coral);
-  border-radius: 50%; /* makes it a circle */
-  position: fixed; /* stays on screen when you scroll */
+  border-radius: 50%;        
+  position: fixed;            
   top: 0;
   left: 0;
-  pointer-events: none; /* so it doesn't block clicks */
-  z-index: 9999; /* sits on top of everything */
+  pointer-events: none;       
+  z-index: 9999;             
   transform: translate(-50%, -50%);
-  /* translate(-50%, -50%) centres the dot
-     on the exact mouse position */
   mix-blend-mode: multiply;
-  /* mix-blend-mode: multiply blends the dot
-     with whatever colour is underneath it */
+
 }
 
 .cursor-ring {
@@ -130,26 +62,17 @@ body {
   pointer-events: none;
   z-index: 9998;
   transform: translate(-50%, -50%);
-  transition:
-    width 0.2s,
-    height 0.2s;
-  /* transition makes the ring smoothly resize
-     when hovering over clickable elements */
+  transition: width 0.2s, height 0.2s;
+  
 }
 
-/* ==========================================
-   5. NAVIGATION BAR
-
-   Fixed at the top of the screen so it
-   stays visible as you scroll down.
-========================================== */
 
 nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100; /* sits above page content */
+  z-index: 100;              
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -161,17 +84,17 @@ nav {
 
 /* The "SN" logo on the left */
 .nav-logo {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 1.3rem;
   letter-spacing: 0.14em;
   color: var(--ink);
-  text-decoration: none; /* removes the underline */
+  text-decoration: none;     
 }
 
 /* The group of links on the right */
 .nav-links {
   display: flex;
-  gap: 36px; /* space between each link */
+  gap: 36px;                 
 }
 
 /* Each individual nav link */
@@ -181,20 +104,18 @@ nav {
   text-transform: uppercase;
   text-decoration: none;
   color: var(--ink);
-  opacity: 0.5; /* slightly faded by default */
+  opacity: 0.5;               
   transition: opacity 0.2s;
 }
 
 .nav-links a:hover {
-  opacity: 1; /* full opacity on hover */
+  opacity: 1;                 
 }
 
-/* The "Hire Me" button — special styling */
+
 .nav-cta {
   background-color: var(--ink);
   color: var(--paper) !important;
-  /* !important overrides the opacity: 0.5 
-     set on all nav links above */
   opacity: 1 !important;
   padding-top: 9px;
   padding-bottom: 9px;
@@ -208,22 +129,12 @@ nav {
   background-color: var(--cobalt) !important;
 }
 
-/* ==========================================
-   6. HERO SECTION
-
-   This is the big intro section at the top.
-   It takes up the full height of the screen.
-   The content is pushed to the bottom using
-   flex + justify-content: flex-end.
-========================================== */
 
 .hero {
   min-height: 100vh;
-  /* 100vh = 100% of the screen height */
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  /* flex-end pushes everything to the bottom */
   padding-top: 140px;
   padding-bottom: 80px;
   padding-left: 52px;
@@ -232,13 +143,6 @@ nav {
   overflow: hidden;
   background-color: var(--paper);
 }
-
-/* --- Background Blobs ---
-   These are just plain divs styled into 
-   large blurry coloured circles.
-   They're positioned absolutely so they
-   sit behind the text content.
-*/
 
 .hero-blob-1 {
   position: absolute;
@@ -264,8 +168,6 @@ nav {
   bottom: 80px;
   right: 30%;
   animation: drift 7s 2s ease-in-out infinite alternate;
-  /* 2s = start the animation 2 seconds late
-     so the blobs don't all move together */
 }
 
 .hero-blob-3 {
@@ -281,8 +183,6 @@ nav {
   animation: drift 11s 1s ease-in-out infinite alternate;
 }
 
-/* --- Top row: "Product Designer · Nigeria" + "Available" --- */
-
 .hero-top-row {
   display: flex;
   justify-content: space-between;
@@ -290,8 +190,6 @@ nav {
   margin-bottom: 60px;
   position: relative;
   z-index: 2;
-  /* z-index: 2 puts this above the blobs 
-     which have no z-index (defaults to 0) */
   animation: fadeUp 0.8s ease both;
 }
 
@@ -302,7 +200,6 @@ nav {
   opacity: 0.45;
 }
 
-/* The green dot + "Available for work" */
 .hero-avail {
   display: flex;
   align-items: center;
@@ -313,7 +210,6 @@ nav {
   opacity: 0.55;
 }
 
-/* The pulsing green dot */
 .avail-dot {
   width: 7px;
   height: 7px;
@@ -322,27 +218,20 @@ nav {
   animation: pulse-dot 2s ease-in-out infinite;
 }
 
-/* --- The big name --- */
 
 .hero-name {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(100px, 14vw, 200px);
-  /* clamp(min, preferred, max)
-     min = never smaller than 100px
-     preferred = 14% of viewport width
-     max = never bigger than 200px */
   line-height: 0.85;
   position: relative;
   z-index: 2;
   animation: fadeUp 0.8s 0.1s ease both;
-  /* 0.1s = delay before animation starts */
 }
 
 .hero-name .highlight {
   color: var(--cobalt);
 }
 
-/* --- Bottom row: tag / description / buttons --- */
 
 .hero-bottom-row {
   display: grid;
@@ -356,7 +245,6 @@ nav {
   animation: fadeUp 0.8s 0.3s ease both;
 }
 
-/* The red "UI/UX · Product Design" tag */
 .hero-title-tag {
   display: inline-block;
   background-color: var(--coral);
@@ -372,21 +260,18 @@ nav {
   width: fit-content;
 }
 
-/* The short description paragraph */
 .hero-desc {
   font-size: 0.92rem;
   line-height: 1.7;
   opacity: 0.6;
 }
 
-/* The two buttons side by side */
 .hero-actions {
   display: flex;
   gap: 12px;
   justify-content: flex-end;
 }
 
-/* "View Work" — filled dark button */
 .btn-primary {
   background-color: var(--ink);
   color: var(--paper);
@@ -399,18 +284,14 @@ nav {
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  transition:
-    background-color 0.2s,
-    transform 0.2s;
+  transition: background-color 0.2s, transform 0.2s;
 }
 
 .btn-primary:hover {
   background-color: var(--cobalt);
   transform: translateY(-2px);
-  /* moves the button 2px upward on hover */
 }
 
-/* "Get In Touch" — outline button */
 .btn-secondary {
   border: 1.5px solid var(--ink);
   color: var(--ink);
@@ -423,10 +304,7 @@ nav {
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  transition:
-    border-color 0.2s,
-    color 0.2s,
-    transform 0.2s;
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
 }
 
 .btn-secondary:hover {
@@ -435,19 +313,9 @@ nav {
   transform: translateY(-2px);
 }
 
-/* ==========================================
-   7. MARQUEE STRIP
-
-   The scrolling ticker between the hero
-   and the work section.
-   The animation moves the track left.
-   The content is duplicated in the HTML
-   so the loop appears seamless.
-========================================== */
 
 .marquee-strip {
   overflow: hidden;
-  /* hides the text that's scrolled off screen */
   padding-top: 13px;
   padding-bottom: 13px;
   border-top: 2px solid var(--ink);
@@ -458,12 +326,11 @@ nav {
 .marquee-track {
   display: flex;
   white-space: nowrap;
-  /* nowrap keeps all items on one line */
   animation: marquee 20s linear infinite;
 }
 
 .marquee-item {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 1.05rem;
   letter-spacing: 0.2em;
   color: var(--acid);
@@ -474,13 +341,6 @@ nav {
 .m-dot {
   color: var(--coral);
 }
-
-/* ==========================================
-   8. SECTION HEADINGS (shared styles)
-
-   These styles are shared between the
-   Work and Experience section headings.
-========================================== */
 
 .section {
   padding-top: 100px;
@@ -500,7 +360,7 @@ nav {
 
 /* e.g. "Selected Work" */
 .section-label {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(38px, 5vw, 68px);
   letter-spacing: 0.04em;
 }
@@ -513,46 +373,24 @@ nav {
   opacity: 0.38;
 }
 
-/* ==========================================
-   9. PROJECT CARDS
-
-   The grid uses 12 columns.
-   Each card spans a different number of 
-   columns to create the editorial layout.
-========================================== */
-
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 18px;
 }
 
-/* How many columns each card takes up */
-.project-card:nth-child(1) {
-  grid-column: span 7;
-}
-.project-card:nth-child(2) {
-  grid-column: span 5;
-}
-.project-card:nth-child(3) {
-  grid-column: span 5;
-}
-.project-card:nth-child(4) {
-  grid-column: span 7;
-}
-.project-card:nth-child(5) {
-  grid-column: span 12;
-}
+.project-card:nth-child(1) { grid-column: span 7; }
+.project-card:nth-child(2) { grid-column: span 5; }
+.project-card:nth-child(3) { grid-column: span 5; }
+.project-card:nth-child(4) { grid-column: span 7; }
+.project-card:nth-child(5) { grid-column: span 12; }
 
-/* The card itself */
 .project-card {
   position: relative;
   overflow: hidden;
   border: 1.5px solid rgba(0, 0, 0, 0.08);
   cursor: pointer;
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .project-card:hover {
@@ -560,7 +398,6 @@ nav {
   box-shadow: 0 28px 64px rgba(0, 0, 0, 0.13);
 }
 
-/* "View on Behance" badge — hidden by default */
 .card-link-badge {
   position: absolute;
   top: 16px;
@@ -579,18 +416,15 @@ nav {
   opacity: 0;
   /* opacity: 0 makes it invisible */
   transform: translateY(-6px);
-  transition:
-    opacity 0.25s,
-    transform 0.25s;
+  transition: opacity 0.25s, transform 0.25s;
 }
 
-/* Badge appears when card is hovered */
+
 .project-card:hover .card-link-badge {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* The coloured illustration area */
 .card-visual {
   width: 100%;
   aspect-ratio: 16 / 10;
@@ -601,7 +435,6 @@ nav {
   justify-content: center;
 }
 
-/* The SVG illustration sits behind the label */
 .card-visual svg {
   position: absolute;
   top: 0;
@@ -610,9 +443,8 @@ nav {
   height: 100%;
 }
 
-/* Big project name over the illustration */
 .card-big-label {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(32px, 4vw, 60px);
   letter-spacing: 0.04em;
   line-height: 1;
@@ -623,44 +455,23 @@ nav {
   padding-right: 24px;
 }
 
-/* Background colours — one class per card */
-.c1 .card-visual {
-  background-color: #1a35ff;
-}
-.c2 .card-visual {
-  background-color: #0d0d0d;
-}
-.c3 .card-visual {
-  background-color: #d4ff00;
-}
-.c4 .card-visual {
-  background-color: #ff3d2e;
-}
+.c1 .card-visual { background-color: #1a35ff; }
+.c2 .card-visual { background-color: #0d0d0d; }
+.c3 .card-visual { background-color: #d4ff00; }
+.c4 .card-visual { background-color: #ff3d2e; }
 .c5 .card-visual {
   background-color: #1a1a2e;
-  aspect-ratio: 21 / 8; /* wider for the full-width card */
+  aspect-ratio: 21 / 8; 
 }
 
-/* Text colour — light on dark cards */
-.c1 .card-big-label {
-  color: #faf7f2;
-}
-.c2 .card-big-label {
-  color: #faf7f2;
-}
-.c4 .card-big-label {
-  color: #faf7f2;
-}
-.c5 .card-big-label {
-  color: #faf7f2;
-}
+.c1 .card-big-label { color: #faf7f2; }
+.c2 .card-big-label { color: #faf7f2; }
+.c4 .card-big-label { color: #faf7f2; }
+.c5 .card-big-label { color: #faf7f2; }
 
-/* Text colour — dark on the yellow card */
-.c3 .card-big-label {
-  color: #0d0d0d;
-}
+.c3 .card-big-label { color: #0d0d0d; }
 
-/* Bottom info bar */
+
 .card-info {
   padding-top: 18px;
   padding-bottom: 18px;
@@ -685,7 +496,6 @@ nav {
   margin-top: 3px;
 }
 
-/* The little arrow circle on the right of each card */
 .card-arrow {
   width: 34px;
   height: 34px;
@@ -696,24 +506,15 @@ nav {
   justify-content: center;
   font-size: 0.85rem;
   flex-shrink: 0;
-  transition:
-    background-color 0.2s,
-    color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
 }
 
-/* Arrow fills in when card is hovered */
 .project-card:hover .card-arrow {
   background-color: var(--ink);
   color: var(--paper);
 }
 
-/* ==========================================
-   10. EXPERIENCE SECTION
 
-   Dark background to contrast with the 
-   white work section above it.
-   Each job is a row in a timeline.
-========================================== */
 
 .exp-section {
   padding-top: 100px;
@@ -724,7 +525,6 @@ nav {
   color: var(--paper);
 }
 
-/* Override the shared section-header styles for dark background */
 .exp-section .section-header {
   border-bottom-color: rgba(255, 255, 255, 0.1);
 }
@@ -739,7 +539,6 @@ nav {
   flex-direction: column;
 }
 
-/* One job row: company info on left, role details on right */
 .exp-item {
   display: grid;
   grid-template-columns: 280px 1fr;
@@ -749,12 +548,10 @@ nav {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Remove the border from the last job */
 .exp-item:last-child {
   border-bottom: none;
 }
 
-/* Left column: period, company name, location */
 .exp-meta {
   display: flex;
   flex-direction: column;
@@ -770,7 +567,7 @@ nav {
 }
 
 .exp-company {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 28px;
   letter-spacing: 0.06em;
   color: var(--paper);
@@ -783,7 +580,6 @@ nav {
   margin-top: 4px;
 }
 
-/* "Current" tag */
 .exp-tag {
   display: inline-block;
   font-size: 0.65rem;
@@ -799,7 +595,6 @@ nav {
   opacity: 0.7;
 }
 
-/* Right column: role title and bullet points */
 .exp-role {
   font-size: 1rem;
   font-weight: 500;
@@ -822,25 +617,12 @@ nav {
   position: relative;
 }
 
-/* Custom dash instead of a bullet point */
 .exp-points li::before {
-  content: "—";
+  content: '—';
   position: absolute;
   left: 0;
   opacity: 0.4;
 }
-
-/* ==========================================
-   11. ABOUT SECTION
-
-   Also dark background (continues from 
-   experience section).
-   
-   Split into three zones:
-   A) Photo + intro text (side by side)
-   B) Stats bar (4 numbers in a row)
-   C) Skills + process (two columns)
-========================================== */
 
 .about-section {
   padding: 0;
@@ -849,7 +631,7 @@ nav {
   overflow: hidden;
 }
 
-/* --- A) Photo + Intro --- */
+
 
 .about-top {
   display: grid;
@@ -857,7 +639,7 @@ nav {
   min-height: 600px;
 }
 
-/* Left: the photo column */
+
 .about-photo-col {
   position: relative;
   overflow: hidden;
@@ -867,18 +649,17 @@ nav {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* object-fit: cover fills the box without 
-     stretching — like background-size: cover */
+
   object-position: center 12%;
   display: block;
   filter: grayscale(15%);
-  /* slight black and white effect */
+
 }
 
-/* Gradient that fades the right edge of the photo into the dark bg */
+
 .about-photo-col::after {
-  content: "";
-  /* ::after needs content: '' to appear */
+  content: '';
+
   position: absolute;
   top: 0;
   left: 0;
@@ -887,22 +668,17 @@ nav {
   background: linear-gradient(to right, transparent 70%, var(--ink) 100%);
 }
 
-/* Colourful bar along the bottom of the photo */
+
 .about-photo-accent {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(
-    to right,
-    var(--acid),
-    var(--cobalt),
-    var(--coral)
-  );
+  background: linear-gradient(to right, var(--acid), var(--cobalt), var(--coral));
 }
 
-/* Right: the intro text column */
+
 .about-intro-col {
   padding-top: 72px;
   padding-bottom: 72px;
@@ -913,7 +689,7 @@ nav {
   justify-content: center;
 }
 
-/* "About Susan" small label */
+
 .about-kicker {
   font-size: 0.68rem;
   letter-spacing: 0.24em;
@@ -922,9 +698,9 @@ nav {
   margin-bottom: 24px;
 }
 
-/* "Design that feels right." heading */
+
 .about-heading {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(52px, 5.5vw, 86px);
   line-height: 0.9;
   margin-bottom: 32px;
@@ -933,10 +709,10 @@ nav {
 .about-heading em {
   color: var(--acid);
   font-style: normal;
-  /* font-style: normal removes the italic */
+
 }
 
-/* Body paragraphs */
+
 .about-body {
   font-size: 0.97rem;
   line-height: 1.8;
@@ -944,7 +720,7 @@ nav {
   max-width: 480px;
 }
 
-/* Add spacing between two .about-body paragraphs */
+
 .about-body + .about-body {
   margin-top: 16px;
 }
@@ -962,7 +738,7 @@ nav {
   flex-wrap: wrap;
 }
 
-/* Yellow-green filled button */
+
 .btn-acid {
   background-color: var(--acid);
   color: var(--ink);
@@ -975,9 +751,7 @@ nav {
   text-transform: uppercase;
   text-decoration: none;
   font-weight: 500;
-  transition:
-    opacity 0.2s,
-    transform 0.2s;
+  transition: opacity 0.2s, transform 0.2s;
 }
 
 .btn-acid:hover {
@@ -985,7 +759,6 @@ nav {
   transform: translateY(-2px);
 }
 
-/* Outline button on dark background */
 .btn-ghost {
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: rgba(255, 255, 255, 0.65);
@@ -997,9 +770,7 @@ nav {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
-  transition:
-    border-color 0.2s,
-    color 0.2s;
+  transition: border-color 0.2s, color 0.2s;
 }
 
 .btn-ghost:hover {
@@ -1007,7 +778,7 @@ nav {
   color: var(--acid);
 }
 
-/* --- B) Stats Bar --- */
+
 
 .about-stats-bar {
   display: grid;
@@ -1037,7 +808,7 @@ nav {
 
 /* Animated line that grows from left on hover */
 .stat-block::before {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
@@ -1053,7 +824,7 @@ nav {
 
 /* e.g. "4+" */
 .stat-num {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 56px;
   line-height: 1;
   color: var(--acid);
@@ -1068,7 +839,7 @@ nav {
   margin-top: 6px;
 }
 
-/* --- C) Skills + Process --- */
+
 
 .about-bottom {
   display: grid;
@@ -1091,7 +862,7 @@ nav {
   padding-right: 52px;
 }
 
-/* Column heading e.g. "Skills & Tools" */
+
 .about-col-label {
   font-size: 0.68rem;
   letter-spacing: 0.22em;
@@ -1102,7 +873,7 @@ nav {
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Each skill group e.g. "Design", "Tools" */
+
 .skills-group {
   margin-bottom: 32px;
 }
@@ -1115,14 +886,13 @@ nav {
   margin-bottom: 14px;
 }
 
-/* The row of pill tags */
 .skills-pills {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-/* Each pill e.g. "Figma" */
+
 .skill-pill {
   padding-top: 7px;
   padding-bottom: 7px;
@@ -1132,10 +902,7 @@ nav {
   font-size: 0.7rem;
   letter-spacing: 0.08em;
   color: rgba(255, 255, 255, 0.7);
-  transition:
-    border-color 0.2s,
-    color 0.2s,
-    background-color 0.2s;
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
 }
 
 .skill-pill:hover {
@@ -1144,13 +911,13 @@ nav {
   background-color: rgba(212, 255, 0, 0.05);
 }
 
-/* Process steps list */
+
 .process-steps {
   display: flex;
   flex-direction: column;
 }
 
-/* One step e.g. "01 — Discover & Research" */
+
 .process-step {
   display: flex;
   gap: 24px;
@@ -1166,7 +933,7 @@ nav {
 
 /* The big faded number e.g. "01" */
 .step-num {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 36px;
   color: rgba(255, 255, 255, 0.1);
   line-height: 1;
@@ -1187,9 +954,7 @@ nav {
   color: rgba(255, 255, 255, 0.42);
 }
 
-/* ==========================================
-   12. CONTACT SECTION
-========================================== */
+
 
 .contact-section {
   padding-top: 120px;
@@ -1214,13 +979,12 @@ nav {
     transparent 70%
   );
   pointer-events: none;
-  /* pointer-events: none means the background
-     doesn't block clicks on the text */
+
 }
 
-/* "Let's build something great." */
+
 .contact-title {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(60px, 9vw, 130px);
   line-height: 0.88;
   position: relative;
@@ -1231,7 +995,7 @@ nav {
   color: var(--cobalt);
 }
 
-/* "Open to freelance, contract..." */
+
 .contact-sub {
   font-size: 0.95rem;
   opacity: 0.5;
@@ -1244,7 +1008,7 @@ nav {
 /* The email address link */
 .contact-email {
   display: inline-block;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(20px, 3vw, 36px);
   letter-spacing: 0.08em;
   color: var(--ink);
@@ -1253,9 +1017,7 @@ nav {
   padding-bottom: 4px;
   position: relative;
   z-index: 1;
-  transition:
-    color 0.2s,
-    border-color 0.2s;
+  transition: color 0.2s, border-color 0.2s;
 }
 
 .contact-email:hover {
@@ -1263,7 +1025,7 @@ nav {
   border-color: var(--cobalt);
 }
 
-/* Behance / LinkedIn / Phone row */
+
 .contact-socials {
   display: flex;
   justify-content: center;
@@ -1292,9 +1054,7 @@ nav {
   opacity: 0.2;
 }
 
-/* ==========================================
-   13. FOOTER
-========================================== */
+
 
 footer {
   background-color: var(--ink);
@@ -1312,15 +1072,7 @@ footer {
   opacity: 0.55;
 }
 
-/* ==========================================
-   14. ANIMATIONS
 
-   @keyframes defines how an animation moves.
-   You reference it by name in the animation
-   property e.g. animation: fadeUp 0.8s ease;
-========================================== */
-
-/* Elements slide up and fade in on page load */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -1332,7 +1084,7 @@ footer {
   }
 }
 
-/* Background blobs slowly drift around */
+
 @keyframes drift {
   from {
     transform: translate(0, 0) scale(1);
@@ -1342,45 +1094,288 @@ footer {
   }
 }
 
-/* Marquee scrolls to the left */
+
 @keyframes marquee {
   from {
     transform: translateX(0);
   }
   to {
     transform: translateX(-50%);
-    /* -50% because the content is duplicated,
-       so halfway through = back to the start */
   }
 }
 
-/* The green "available" dot pulses */
 @keyframes pulse-dot {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scale(1.4);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+  0%   { opacity: 1; transform: scale(1); }
+  50%  { opacity: 0.5; transform: scale(1.4); }
+  100% { opacity: 1; transform: scale(1); }
 }
 
-/* Scroll reveal — starts hidden */
+
 .reveal {
   opacity: 0;
   transform: translateY(32px);
-  transition:
-    opacity 0.65s ease,
-    transform 0.65s ease;
+  transition: opacity 0.65s ease, transform 0.65s ease;
 }
 
-/* JavaScript adds this class when the element scrolls into view */
+
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+
+@media (max-width: 768px) {
+
+  body {
+    cursor: auto;
+  }
+
+  .cursor {
+    display: none;
+  }
+
+  .cursor-ring {
+    display: none;
+  }
+
+  nav {
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .nav-links {
+    gap: 16px;
+  }
+
+
+  .nav-links a:not(.nav-cta) {
+    display: none;
+  }
+
+
+  .nav-cta {
+    display: inline-block;
+  }
+
+
+  .hero {
+    padding-top: 110px;
+    padding-bottom: 60px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+
+  .hero-top-row {
+    margin-bottom: 32px;
+  }
+
+  .hero-name {
+    font-size: clamp(72px, 18vw, 100px);
+  }
+
+  .hero-bottom-row {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+    margin-top: 28px;
+  }
+
+  .hero-actions {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .btn-primary {
+    flex: 1;
+    text-align: center;
+  }
+
+  .btn-secondary {
+    flex: 1;
+    text-align: center;
+  }
+
+
+
+  .marquee-item {
+    font-size: 0.9rem;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+
+  .section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .project-card:nth-child(1) { grid-column: auto; }
+  .project-card:nth-child(2) { grid-column: auto; }
+  .project-card:nth-child(3) { grid-column: auto; }
+  .project-card:nth-child(4) { grid-column: auto; }
+  .project-card:nth-child(5) { grid-column: auto; }
+
+  .c5 .card-visual {
+    aspect-ratio: 16 / 10;
+  }
+
+  .card-big-label {
+    font-size: clamp(24px, 8vw, 40px);
+  }
+
+  .exp-section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .exp-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  .exp-company {
+    font-size: 22px;
+  }
+
+  .about-top {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .about-photo-col {
+    height: 380px;
+    width: 100%;
+  }
+
+  .about-photo-col::after {
+    background: linear-gradient(
+      to bottom,
+      transparent 60%,
+      var(--ink) 100%
+    );
+  }
+
+  .about-intro-col {
+    padding-top: 48px;
+    padding-bottom: 48px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .about-heading {
+    font-size: clamp(40px, 10vw, 64px);
+  }
+
+  .about-cta-row {
+    flex-direction: column;
+  }
+
+  .btn-acid {
+    text-align: center;
+  }
+
+  .btn-ghost {
+    text-align: center;
+  }
+
+  .about-stats-bar {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stat-block:nth-child(1) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .stat-block:nth-child(2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .stat-block:nth-child(2) {
+    border-right: none;
+  }
+
+  .stat-block:nth-child(4) {
+    border-right: none;
+  }
+
+  .stat-block {
+    padding-top: 28px;
+    padding-bottom: 28px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .stat-num {
+    font-size: 44px;
+  }
+
+  .about-bottom {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-skills-col {
+    padding-top: 48px;
+    padding-bottom: 48px;
+    padding-left: 24px;
+    padding-right: 24px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .about-process-col {
+    padding-top: 48px;
+    padding-bottom: 48px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .contact-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .contact-socials {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+
+  .social-divider {
+    display: none;
+  }
+
+  .contact-email {
+    font-size: clamp(16px, 5vw, 24px);
+    word-break: break-all;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
 }
